@@ -1,0 +1,2 @@
+# PowerShell-Fortune-Teller
+This game project is the PowerShell Fortune Teller game. This game simulates a session with a virtual fortune teller who listens to player questions and then provides answers. The answers provided vary based on the fortune teller’s mood, which changes based on the time of day that questions are asked. All questions are expected to be posed in such a way that yes/no answers can be applied.
