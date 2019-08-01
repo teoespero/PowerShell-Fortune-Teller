@@ -26,28 +26,11 @@ Clear-Host
 
 ## display the game's opening screen
 
-Write-Host
-Write-Host
-Write-Host "           ==================================================================="
-Write-Host
-Write-Host "                       W E L C O M E   T O   T H E   W I N D O W S"
-Write-Host
-Write-Host
-Write-Host          
-Write-Host "                    P O W E R S H E L L   F O R T U N E   T E L L E R"
-Write-Host
-Write-Host
-Write-Host
-Write-Host "                                        By Teo Espero"
-Write-Host
-Write-Host "           ==================================================================="
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
+Write-Host "`n`n           ===================================================================`n"
+Write-Host "                       W E L C O M E   T O   T H E   W I N D O W S`n`n`n"
+Write-Host "                    P O W E R S H E L L   F O R T U N E   T E L L E R`n`n`n"
+Write-Host "                                        By Teo Espero`n"
+Write-Host "           ===================================================================`n`n`n`n`n`n`n"
 Write-Host " Press Enter to continue."
 
 ## Pause the script execution and wait for the player to press the Enter key
@@ -58,29 +41,9 @@ Read-Host
 
 Clear-Host
 
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host "           The fortune teller is a very busy and impatient mystic. Make"
-Write-Host
-Write-Host "            your questions brief and simple and only expect to receive"
-Write-Host
-Write-host "                            Yes / No styled answers."
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
+Write-Host "`n`n`n`n`n`n`n`n           The fortune teller is a very busy and impatient mystic. Make`n"
+Write-Host "            your questions brief and simple and only expect to receive`n"
+Write-host "                            Yes / No styled answers.`n`n`n`n`n`n`n`n`n`n"
 Write-Host " Press Enter to continue."
 
 ## Pause the script execution and wait for the player to press the Enter key
@@ -92,56 +55,68 @@ Read-Host
 while ($status -ne "Stop") {
     ## Ask the player the first question
 
+    $question = "" #Reset variable to an empty string
+
     while ($question -eq ""){
         Clear-Host 
 
         Write-Host
         $question = read-host " What is your question? "
     }
-    $question = "" #Reset variable to an empty string
+
  
     ## Retrieve a random number between 1 and 4
     $answer = $randomNo.Next(1,5)
+    
 
     ## Select an answer based on the time and the random number
 
+    ################################################################################
+    ## I've commented out the code below to modify the program from
+    ## using Ifs into Switch
+    ## Date changed: 08/01/2019
+    ## changed by: Teo Espero
+
     ## If it is the afternoon the fortune teller will be a little cranky
-    if ($time -gt 12) {
-        Write-Host
-        if ($answer -eq 1) { " Grrrr. The answer is no!" }
-        if ($answer -eq 2) { " Grrrr. The answer is never!" }
-        if ($answer -eq 3) { " Grrrr. The answer is unclear!" }
-        if ($answer -eq 4) { " Grrrr. The answer is yes!" }
-    }
+    ## if ($time -gt 12) {
+    ##     Write-Host
+    ##     if ($answer -eq 1) { " Grrrr. The answer is no!" }
+    ##     if ($answer -eq 2) { " Grrrr. The answer is never!" }
+    ##     if ($answer -eq 3) { " Grrrr. The answer is unclear!" }
+    ##     if ($answer -eq 4) { " Grrrr. The answer is yes!" }
+    ## }
 
     ## If it is morning, the fortune teller will be in a good mood
+    ## else {
+    ##     Write-Host
+    ##     if ($answer -eq 1) { " Ah. The answer is yes!" }
+    ##     if ($answer -eq 2) { " Ah. The answer is always!" }
+    ##     if ($answer -eq 3) { " Ah. The answer is uncertain!" }
+    ##     if ($answer -eq 4) { " Ah. The answer is no!" }
+    ## }
+    ################################################################################
+
+
+    if ($time -gt 12) {
+        Write-Host $time
+        switch ($answer){
+                1 { Write-Host " Grrrr. The answer is no!" }
+                2 { Write-Host " Grrrr. The answer is never!" }
+                3 { Write-Host " Grrrr. The answer is unclear!" }
+                4 { Write-Host " Grrrr. The answer is yes!" }
+            }
+        }
     else {
         Write-Host
-        if ($answer -eq 1) { " Ah. The answer is yes!" }
-        if ($answer -eq 2) { " Ah. The answer is always!" }
-        if ($answer -eq 3) { " Ah. The answer is uncertain!" }
-        if ($answer -eq 4) { " Ah. The answer is no!" }
-    }
+        switch($answer){
+                1 { Write-Host " Ah. The answer is yes!" }
+                2 { Write-Host " Ah. The answer is always!" }
+                3 { Write-Host " Ah. The answer is uncertain!" }
+                4 { Write-Host " Ah. The answer is no!" }
+            }
+        }
 
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
-    Write-Host
+    Write-Host "`n`n`n`n`n`n`n`n`n`n`n`n`n`n`n`n`n`n"
     Write-Host " Press Enter to continue."
 
     ## Pause script execution and wait for the player to press the Enter key
@@ -163,32 +138,17 @@ while ($status -ne "Stop") {
     if ($reply -eq "q") { $status = "Stop" }
 }
 
-
 ## Show credits 
 
 Clear-Host
 
-Write-Host
-Write-Host
-Write-Host 
-Write-Host
-Write-Host 
-Write-Host
-Write-Host
-Write-Host "                                   The PowerShell Fortune Teller"
-Write-Host 
+Write-Host "`n`n`n`n`n`n"
+Write-Host "                                   The PowerShell Fortune Teller`n"
 Write-Host "             Copyright 2019 - Teo Espero, Cloud and Systems Administration (BS)"
 Write-Host "                                   Western Governors University"
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host
-Write-Host 
+Write-Host "`n`n`n`n`n`n`n"
 
-## create a 5-second delay before returning the player to the command shell
+## create a 3-second delay before returning the player to the command shell
 
 Start-Sleep -Seconds 3
 
